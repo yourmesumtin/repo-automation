@@ -1,0 +1,30 @@
+name: Update Repositories
+
+on:
+  workflow_dispatch:
+#   schedule:
+    # - cron: '0 0 * * *'  # Runs every day at midnight
+
+jobs:
+  update-repos:
+    runs-on: 
+        group: ubuntu-runners 
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+
+    - name: Install Python dependencies
+      run: |
+        pip install PyGithub
+
+    - name: Run Update Script
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_ACCESS_TOKEN }}
+      run: python ./scripts/update_repositories.py
+
