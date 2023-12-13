@@ -25,13 +25,13 @@ def update_repository(repo):
     subprocess.run(['git', 'clone', clone_url])
     
     # Check if PR template and JIRA workflow already exist
-    if os.path.exists(pr_template_path) and os.path.exists(jira_workflow_path):
-        print(f'{repo_name} already updated. Skipping...')
-        return
+    # if os.path.exists(pr_template_path) and os.path.exists(jira_workflow_path):
+    #     print(f'{repo_name} already updated. Skipping...')
+    #     return
     
-     # Ensure .github and .github/workflows directories exist
-    os.makedirs(f'{repo_name}/.github', exist_ok=True)
-    os.makedirs(f'{repo_name}/.github/workflows', exist_ok=True)
+    #  # Ensure .github and .github/workflows directories exist
+    # os.makedirs(f'{repo_name}/.github', exist_ok=True)
+    # os.makedirs(f'{repo_name}/.github/workflows', exist_ok=True)
 
     # Add PR template
     os.system(f'cp {pr_template_path} {repo_name}/.github/PULL_REQUEST_TEMPLATE.md')
