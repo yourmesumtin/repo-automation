@@ -4,7 +4,7 @@ on:
     types: [opened, edited, synchronize]
 jobs:
   check-title:
-    runs-on: Admin-OP0002
+    runs-on: ubuntu-runners
     steps:
     - name: Check PR body
       uses: actions/github-script@v4
